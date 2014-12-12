@@ -1,0 +1,23 @@
+#ifndef __AVR_ATmega32__
+    #define __AVR_ATmega32__
+#endif
+
+#include "avr/io.h"
+
+rjmp Init
+
+ Init:
+    ser r16
+    out _SFR_IO_ADDR(DDRB), r16
+    out _SFR_IO_ADDR(DDRD), r16
+
+    clr r16
+
+    out _SFR_IO_ADDR(PORTB), r16
+    out _SFR_IO_ADDR(PORTD), r16
+
+    .global main
+
+main:
+    sbi _SFR_IO_ADDR(PORTB), 0
+    rjmp main
