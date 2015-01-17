@@ -1,0 +1,2 @@
+avr-gcc main.s -mmcu=atmega32 -Os -g -o test.o
+avr-objcopy -O ihex test.o test.hex
